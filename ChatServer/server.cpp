@@ -62,6 +62,7 @@ void HandleClient(SOCKET clientSocket, int id) {
             clients.erase(std::remove(clients.begin(), clients.end(), clientSocket), clients.end());
             clients_mutex.unlock();
 
+            // update user list panel after a client disconnected
             BroadcastUserList();  // Send updated user list to all clients
             break;
         }
